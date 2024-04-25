@@ -1,0 +1,28 @@
+package com.example.uselessfacts.model
+
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.uselessfacts.services.FactsAPI
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+class RandomFactViewModel : ViewModel() {
+    var fact by mutableStateOf("Press the button to get a random fact")
+    var factHistory = mutableListOf<String>()
+
+    fun fetchRandomFact(lang:String = "en",option:String = "random") {
+        viewModelScope.launch(Dispatchers.IO) {
+            fact = try {
+                val response = FactsAPI.sendGet(lang,option)
+                factHistory.add(response.text)
+                response.text
+            } catch (e: Exception) {
+                "Error fetching fact: ${e.message}"
+            }
+
+        }
+    }
+}
