@@ -14,7 +14,7 @@ class RandomFactViewModel : ViewModel() {
     var factHistory = mutableListOf<String>()
 
     fun fetchRandomFact(lang:String = "en",option:String = "random") {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.Default) {
             fact = try {
                 val response = FactsAPI.sendGet(lang,option)
                 factHistory.add(response.text)
