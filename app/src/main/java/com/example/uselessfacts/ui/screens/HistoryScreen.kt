@@ -55,7 +55,7 @@ fun HistoryScreen(navHostController: NavHostController,viewModel:RandomFactViewM
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(text = viewModel.factHistory[index], textAlign= TextAlign.Center, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(10.dp))
-                Divider()
+                Divider(color = MaterialTheme.colorScheme.primary, thickness = 2.dp)
             }
         }
 
