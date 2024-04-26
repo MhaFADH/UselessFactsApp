@@ -1,6 +1,7 @@
 package com.example.uselessfacts.ui.screens
 
 import android.widget.Space
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.filled.ArrowBack
@@ -8,6 +9,7 @@ import androidx.compose.material.icons.materialIcon
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,7 +32,8 @@ fun HistoryScreen(navHostController: NavHostController,viewModel:RandomFactViewM
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+
     ) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Button(onClick = { navHostController.popBackStack()}) {
